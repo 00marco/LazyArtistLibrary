@@ -1,0 +1,9 @@
+*.csv
+*.sqlite
+.env
+*.ipynb
+*.json
+*.log
+*.feather
+*.pkl
+*.parquet

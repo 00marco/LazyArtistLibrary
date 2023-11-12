@@ -3,6 +3,7 @@
 
 import cv2
 import logging
+import random
 
 logging.basicConfig(
     format="{levelname: <8}:{asctime}:{name: <30}:{lineno: <4}:{message}",

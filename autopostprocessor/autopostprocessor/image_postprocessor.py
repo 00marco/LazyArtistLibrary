@@ -39,11 +39,11 @@ class ImagePostProcessor:
         print("get closeups")
         frames = []
         for i in range(2,4):
-            frames += self.get_image_crops_from_sliding_window(crop_height=self.height/i, crop_width=self.width/i)
+            frames += self.get_image_crops_from_sliding_window(crop_height=self.height/i, crop_width=self.width/i, restore_size=True)
         return frames
 
 
-    def get_image_crops_from_sliding_window(self, crop_width, crop_height):
+    def get_image_crops_from_sliding_window(self, crop_width, crop_height, restore_size=False):
         width_start = 0
         width_end = int(width_start + crop_width)
         width_increment = 0.05
@@ -60,6 +60,8 @@ class ImagePostProcessor:
                                         height_start:height_end,
                                         width_start:width_end,
                                        ].copy()
+                if restore_size:
+                    image_crop = cv2.resize(image_crop, (self.width, self.height))
                 image_crops.append(image_crop)
                 height_start += int(self.height * height_increment)
                 height_end = int(height_start + crop_height)

@@ -21,6 +21,7 @@ class ImagePostProcessor:
 
     def get_thumbnails(self):
         # 1:1
+        print("get thumbnails")
         crop_width = self.width 
         crop_height = crop_width
         return self.get_image_crops_from_sliding_window(crop_width=crop_width, crop_height=crop_height)
@@ -28,16 +29,18 @@ class ImagePostProcessor:
     
     def get_banners(self):
         # 16:9
+        print("get banners")
         crop_width = self.width
         crop_height = int(crop_width / 16 * 9)
         return self.get_image_crops_from_sliding_window(crop_width=crop_width, crop_height=crop_height)
     
 
     def get_closeups(self):
-        frames = {}
-        for i in range(2,6):
-            frames[i] = self.get_image_crops_from_sliding_window(crop_height=self.height/i, crop_width=self.width/i)
-        return 
+        print("get closeups")
+        frames = []
+        for i in range(2,4):
+            frames += self.get_image_crops_from_sliding_window(crop_height=self.height/i, crop_width=self.width/i)
+        return frames
 
 
     def get_image_crops_from_sliding_window(self, crop_width, crop_height):
@@ -52,17 +55,19 @@ class ImagePostProcessor:
             height_increment = 0.05
             
             while height_end <= self.height:
-                print(height_start,height_start+crop_height,width_start,width_start+crop_width, self.height, self.width)
+                # print(height_start, height_end, width_start, width_end, self.height, self.width)
                 image_crop = self.image[
                                         height_start:height_end,
                                         width_start:width_end,
                                        ].copy()
                 image_crops.append(image_crop)
                 height_start += int(self.height * height_increment)
+                height_end = int(height_start + crop_height)
                 
-            print(width_start)
+            # print(width_start)
             width_start += int(self.width * width_increment)
-            print(width_start)
+            width_end = int(width_start + crop_width)
+            # print(width_start)
         
         return image_crops
     

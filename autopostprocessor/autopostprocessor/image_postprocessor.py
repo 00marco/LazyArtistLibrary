@@ -33,27 +33,29 @@ class ImagePostProcessor:
         return self.get_image_crops_from_sliding_window(crop_width=crop_width, crop_height=crop_height)
     
 
-    def get_closeups(self, height=None, width=None):
+    def get_closeups(self):
         frames = {}
         for i in range(2,6):
-            frames[i] = self.get_image_crops_from_sliding_window(crop_height=height, crop_width=width)
+            frames[i] = self.get_image_crops_from_sliding_window(crop_height=self.height/i, crop_width=self.width/i)
         return 
 
 
     def get_image_crops_from_sliding_window(self, crop_width, crop_height):
         width_start = 0
+        width_end = int(width_start + crop_width)
         width_increment = 0.05
         
         image_crops = []
-        while width_start + crop_width <= self.width:
+        while width_end <= self.width:
             height_start = 0
+            height_end = int(height_start + crop_height)
             height_increment = 0.05
             
-            while height_start + crop_height <= self.height:
+            while height_end <= self.height:
                 print(height_start,height_start+crop_height,width_start,width_start+crop_width, self.height, self.width)
                 image_crop = self.image[
-                                        height_start:height_start+crop_height,
-                                        width_start:width_start+crop_width,
+                                        height_start:height_end,
+                                        width_start:width_end,
                                        ].copy()
                 image_crops.append(image_crop)
                 height_start += int(self.height * height_increment)

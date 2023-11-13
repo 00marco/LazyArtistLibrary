@@ -11,7 +11,7 @@ logger = logging.getLogger(__name__)
 import numpy as np
 
 
-class VideoPostProcessing:
+class VideoPostProcessor:
     def __init__(self, video_capture):
         self.video_capture = video_capture
         self.frame_count = self.video_capture.get(cv2.CAP_PROP_FRAME_COUNT)

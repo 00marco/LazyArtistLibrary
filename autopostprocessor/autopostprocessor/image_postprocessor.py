@@ -11,7 +11,7 @@ logger = logging.getLogger(__name__)
 import numpy as np
 
 
-class ImagePostProcessing:
+class ImagePostProcessor:
     def __init__(self, image):
         self.image = image
         self.width = int(self.image.shape[1])

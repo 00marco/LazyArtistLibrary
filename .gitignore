@@ -17,5 +17,5 @@ data/*
 .Trash-0/*
 *.ipynb
 
-desktop_app/build/*
-desktop_app/dist/*
+*/build/*
+*/dist/*

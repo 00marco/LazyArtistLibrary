@@ -14,7 +14,7 @@ setup(
             # Add any console scripts here if needed
         ],
     },
-    author='Marco Pulido'
+    author='Marco Pulido',
     author_email='marcopulido00@gmail.com',
     description='image processing base logic for Lazy Artist app',
     url='https://github.com/TODO',

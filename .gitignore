@@ -19,3 +19,7 @@ data/*
 
 */build/*
 */dist/*
+autopostprocessor/autopostprocessor.egg-info/dependency_links.txt
+autopostprocessor/autopostprocessor.egg-info/PKG-INFO
+autopostprocessor/autopostprocessor.egg-info/SOURCES.txt
+autopostprocessor/autopostprocessor.egg-info/top_level.txt
